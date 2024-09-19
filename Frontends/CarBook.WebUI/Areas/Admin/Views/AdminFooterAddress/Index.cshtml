@@ -1,0 +1,77 @@
+﻿@model List<ResultFooterAddressDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">İletişim ve Footer Alanı Adres Sayfası</h4>
+                        <p class="card-subtitle mb-4">
+                            İletişim ve Footer kısımlarında yer alan bilgilere ait işlemleri buradan yapabilirsiniz. 
+                            Harita bilgisi için Google Map üzerinden lokasyon ayarlayınız.
+                        </p>
+                        <div class="table-responsive">
+                            @if (Model.Count > 0)
+                            {
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Adres</th>
+                                            <th>Telefon</th>
+                                            <th>E-Mail</th>
+                                            <th>Açıklama</th>
+                                            <th>Güncelle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            count++;
+                                            <tr>
+                                                <td>@item.Address</td>
+                                                <td>@item.Phone</td>
+                                                <td>@item.Email</td>
+                                                <td>@item.Description</td>
+                                                <td><a href="/Admin/AdminFooterAddress/UpdateFooterAddress/@item.FooterAddressID" class="btn btn-outline-success">Güncelle</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <p class="mb-0">Henüz hiçbir yazar eklenmedi!</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/datatables/buttons.html5.min.js"></script>
+<script src="../plugins/datatables/buttons.flash.min.js"></script>
+<script src="../plugins/datatables/buttons.print.min.js"></script>
+<script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+<script src="../plugins/datatables/dataTables.select.min.js"></script>
+<script src="../plugins/datatables/pdfmake.min.js"></script>
+<script src="../plugins/datatables/vfs_fonts.js"></script>
+<!-- third party js ends -->
+<!-- Datatables init -->
+<script src="assets/pages/datatables-demo.js"></script>

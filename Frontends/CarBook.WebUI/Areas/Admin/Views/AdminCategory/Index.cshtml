@@ -1,0 +1,59 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Kategorileri</h4>
+                        <p class="card-subtitle mb-4">
+                            Blog kategorilerini aşağıdan düzenleyebilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            @if (Model.Count > 0)
+                            {
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Kategori Adı</th>
+                                            <th>Sil</th>
+                                            <th>Güncelle</th>
+                                            <th>Bloglara Git</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            count++;
+                                            <tr>
+                                                <td>@count</td>
+                                                <td>@item.Name</td>
+                                                <td><a href="/Admin/AdminCategory/RemoveCategory/@item.CategoryId" class="btn btn-outline-danger">Sil</a></td>
+                                                <td><a href="/Admin/AdminCategory/UpdateCategory/@item.CategoryId" class="btn btn-outline-success">Güncelle</a></td>
+                                                <td><a href="Blog/Index/" class="btn btn-outline-dark">Bloglara Git</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <p class="mb-0">Henüz hiçbir Kategori eklenmedi!</p>
+                                </div>
+                            }
+                            <a href="/Admin/AdminCategory/CreateCategory" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

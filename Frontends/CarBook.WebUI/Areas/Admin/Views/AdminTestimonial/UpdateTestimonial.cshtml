@@ -1,0 +1,40 @@
+﻿@model UpdateTestimonialDto
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Referans Güncellemesi</h4>
+                        <p class="card-subtitle mb-4">Referans güncellemelerini bu kısımdan yapabilirsiniz.</p>
+                        <form method="post">
+                            <input type="hidden" asp-for="TestimonialID"/>
+                            <div class="form-group">
+                                <label for="exampleInputName">Ad Soyad</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTitle">Başlık</label>
+                                <input type="text" class="form-control" id="exampleInputTitle" asp-for="Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Fotoğraf</label>
+                                <input type="text" class="form-control" id="exampleInputImageUrl" asp-for="ImageUrl">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputComment">Yorum</label>
+                                <textarea rows="4" type="text" class="form-control" id="exampleInputComment" asp-for="Comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
